@@ -1,0 +1,76 @@
+test runner- Used to run tests and return results
+test fixtures- How tests are set up by module
+assertions- functions that allow us to check conditions
+mocking- allow us to remove functionality when running tests. Mocking allows CRUD operations without modifying your database
+
+unit tests- when smallest testable units of code are individually tested such as functions
+API testing- tests APIs to ensure functionality goes as expected
+
+
+// Databases
+
+SQL is better when a structure is well defined and known- banking systems, cc information etc
+
+NoSQL is best for unstructured data. Large amounts. Structure is less important and likely to change often.
+
+SQL has reliability when making relations with a database.
+
+ACID (atomicity, consistency, isolation, durability)
+
+(From IBM)
+Atomicity
+All changes to data are performed as if they are a single operation. That is, all the changes are performed, or none of them are.
+For example, in an application that transfers funds from one account to another, the atomicity property ensures that, if a debit is made successfully from one account, the corresponding credit is made to the other account.
+Consistency
+Data is in a consistent state when a transaction starts and when it ends.
+For example, in an application that transfers funds from one account to another, the consistency property ensures that the total value of funds in both the accounts is the same at the start and end of each transaction.
+Isolation
+The intermediate state of a transaction is invisible to other transactions. As a result, transactions that run concurrently appear to be serialized.
+For example, in an application that transfers funds from one account to another, the isolation property ensures that another transaction sees the transferred funds in one account or the other, but not in both, nor in neither.
+Durability
+After a transaction successfully completes, changes to data persist and are not undone, even in the event of a system failure.
+For example, in an application that transfers funds from one account to another, the durability property ensures that the changes made to each account will not be reversed.
+
+mongodb is collections that store many document. mongo enforces structure.
+
+mongoose gives us schema objects that are mapped to a document in mongodb.
+
+node.js queries => model uses -> schema => maps to => collection which has many documents
+  //insert +update = upsert
+  // upsert only works when property doesnt exist
+
+Referencial integrity will ensure that when you reference another key, that it exists, is valid
+
+Mongodb makes it hard to handle incrementing numbers
+This is because mongo works in clusters and is made to talk to many instances of mongos database
+
+What is the $setOnInsert If an update operation with upsert: true results in an insert of a document, then 
+$setOnInsertassigns the specified values to the fields in the document. Also uploads in memory
+
+It is wise to version your api so that if you upgrade it, users can still use the old version if they want
+
+versioning is grouping your routes under a version pack and keeping an old version of your route alive.
+You can depreciate, or tell users youll stop supporting it.
+
+Because we want to avoid our users updating things all at once, versioning allows us to gradually 
+update our api without breaking things
+
+Remember that when pulling an api, check to see if they have a postman collection to install
+
+In the wild, you will sometimes see a POST request instead of a GET request to pull up data. This
+is because it allows you to enter additional search parameters other than ones that are specified
+
+Technically, this is not part of the REST pattern.
+
+Pagination- Splitting the data into seperate pages allows the server to communicate with the client mroe efficiently by
+splitting up the data that gets sent to the client.
+To change the page of a paginated API, simply put a page property on and set it to the page you want
+You can also set a limit proprty and if you dont want pagination, all you gotta so is {
+  pagination: false,
+}
+
+Most common way of pdoing pagination is to pass a query resquest into your parameters
+
+You can request a query in node.js by using req.query. query is a keyword in node.
+
+In order to sort the pagnated data, you can sort the data after finding it.
