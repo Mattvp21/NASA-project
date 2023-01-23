@@ -74,3 +74,45 @@ Most common way of pdoing pagination is to pass a query resquest into your param
 You can request a query in node.js by using req.query. query is a keyword in node.
 
 In order to sort the pagnated data, you can sort the data after finding it.
+
+Different Authorization services include - Octa and Amazons Cognito
+
+The Principle of Least Priviledge- Restrict access to only those who need it
+
+HTTPS encrypts data in transit. Prevents hackers from stealing and modifying it.
+
+If un-encrypted, the data and response can be read by anyone connected to our network. 
+Peopple can read the traffic with a packet analysis tool.(Wireshark)
+
+With https protocol the encryption used is SSL/TLS.
+TLS is the successor to SSL
+Many still call it SSL
+They provide the shell that becomes HTTPS
+An SSL certificate is used to verify servers ownership prior to sending encrypted data
+
+A man in the middle attack is when a hacker pretends to be the server were talking to and takes that data for there own purpose
+A SSL certificate verifoes the owner first.
+
+Lets encrypt does a SSL certificate for free but only if it has a domain name.
+
+A self signed certificate enables https but isnt truested by others. Useful for development
+
+CA-Signed certificates are trusted by most clients on the web and useful for production. Signed by certificate authorities
+
+Continuous integration(CI) - It's a best practice that continuously takes new code written on our machines and
+integrate them into the main code of the project
+Made popular by Agile methedoligies. Extreme programming means releasing your code multiple times a day
+Continous delivery(CD) - Builds on CI by giving confidence that your code will work in production
+Every time we send code, it is ready to put to production
+User acceptance test- Makes sure app does what it claims it does. Specifications are met.
+This is done by a QA team
+Better then releasing an app in one big deployment.
+Ensures that the developers know that they are building a product for an end user
+Continuous deployment- Automates Continuous Delivery
+Actual deploy is manual in continuous delivery
+Deploy is automatic in continuous deployment
+integration tests test to see how components od your app interact with each other
+CI/CD pipeline is the workflow you use 
+ci.yml is a workflow continuation file
+Benifit of Github actions is that you can use workflows that others have built to serve the purpose that you want
+A workflow is a configurable automated process that will run one or more jobs. 
