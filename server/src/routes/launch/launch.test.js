@@ -10,7 +10,7 @@ describe('Launches API', () => {
 //This ryns with a nested test and beforeall happens to set up the other tests
     beforeAll(async () => {
    await mongoConnect()
-   await loadPlanetsData
+   await loadPlanetsData();
 })
 //This ryns with a nested test and beforeall happens after running all the tests
 afterAll(async () => {
@@ -59,6 +59,7 @@ describe('Test POST /launches', ()=> {
         const requestDate = new Date(completeLaunchDate.launchDate).valueOf(); 
         const responseDate = new Date(response.body.launchDate).valueOf();
         expect(responseDate).toBe(requestDate);
+        
         expect(response.body).toMatchObject(launchDataWithoutDate);
     })
 
