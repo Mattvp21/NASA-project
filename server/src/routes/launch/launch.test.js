@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../../app');
+const { loadPlanetsData } = require('../../models/planets.model');
 const {mongoConnect, mongoDisconnect} = require('../../services/mongo')
 
 //BE CAREFUL HOW YOU RUN YOUR TESTS BECAUSE THEY COULD BE INTEGRATION TESTS WHICH CAN MANIPULATE YOUR ACUAL DATA
@@ -9,6 +10,7 @@ describe('Launches API', () => {
 //This ryns with a nested test and beforeall happens to set up the other tests
     beforeAll(async () => {
    await mongoConnect()
+   await loadPlanetsData
 })
 //This ryns with a nested test and beforeall happens after running all the tests
 afterAll(async () => {

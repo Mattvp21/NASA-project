@@ -23,8 +23,10 @@ async function scheduleNewLaunch(launch) {
 
     if(!planet) {
         throw new Error('No matching planet')
-    }
-    const newFlightNumber = await getLatestFlightNumber() + 1
+    };
+
+    const newFlightNumber = await getLatestFlightNumber() + 1;
+
     const newLaunch = Object.assign(launch, {
         success: true,
         upcoming: true,
