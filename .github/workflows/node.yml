@@ -12,9 +12,11 @@ jobs:
     # built in feature of create-react-app test script
     env: 
       CI: true
+      MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix: 
         node-version: [14.x, 16.x]
+        mongodb-version: ['4.4']
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
@@ -22,11 +24,15 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: ${{ matrix.node-version }}
+      - name: MongoDB in GitHub Actions
+        uses: supercharge/mongodb-github-action@1.8.0
+        with: ${{ matrix.mongodb-version }}
       - run: npm install  
       - run: npm run build --prefix client
       - run: npm test
 
 #disable tests when we run github actions - run an envirronment variable
+# Your tests may fail if the MONGO_URI is not a string. Issue is the uri is in the env file which is not a part of our github repository
 
 
 
