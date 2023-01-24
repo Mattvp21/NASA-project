@@ -58,7 +58,7 @@ describe('Test POST /launches', ()=> {
 
         const requestDate = new Date(completeLaunchDate.launchDate).valueOf(); 
         const responseDate = new Date(response.body.launchDate).valueOf();
-        expect(requestDate).toBe(responseDate);
+        expect(responseDate).toBe(requestDate);
         expect(response.body).toMatchObject(launchDataWithoutDate);
     })
 
